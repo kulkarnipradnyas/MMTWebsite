@@ -1,0 +1,55 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "es6",
+      "es5",
+      "ES7",
+      "esnext",
+      "dom.iterable"
+    ],
+    "module": "esnext",
+    "sourceMap": false,
+    "skipLibCheck": true,
+    "baseUrl": "src",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "isolatedModules": false,
+    "pretty": false,
+    "noEmit": true,
+    "target": "es5",
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "suppressImplicitAnyIndexErrors": false,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "outDir": "build",
+    "jsx": "react-jsx",
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "alwaysStrict": false,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
+    "strictFunctionTypes": false,
+    "forceConsistentCasingInFileNames": false,
+    "declaration": true,
+    "types": [
+      "node",
+      "jest",
+      "@testing-library/jest-dom",
+      "webpack-env"
+    ],
+    "checkJs": true
+  },
+  "include": [
+    "src",
+    "jest.config.json",
+    "webpack", "webpack",
+  ],
+  "exclude": [
+    "node_modules",
+    "coverage",
+  ]
+}

@@ -1,0 +1,36 @@
+@use "~sass-rem" as rem;
+
+
+.headerParent {
+    background-color: #fff;
+    box-shadow: 0 3px 11px 0 rgb(0 0 0 / 15%);
+    width: 100%;
+    display: flex;
+    .headers{
+        display: flex;
+        margin-left: 30rem;
+        margin-top: rem.convert(10px);
+        align-items: center;
+        margin-bottom: rem.convert(10px);
+    }
+    .options{
+        margin: rem.convert(15px);
+       
+    }
+    a:link {
+        color: #000;
+        text-decoration: none;
+      }
+      a:visited {
+        color: blue;
+        text-decoration: none;
+      }
+      a:hover {
+        color: blue;
+        text-decoration: underline;
+      }
+      a:active {
+        color: blue;
+        text-decoration: underline;
+      }
+}
