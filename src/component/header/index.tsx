@@ -1,34 +1,55 @@
-import * as React from "react";
-import "./header.scss";
-import logo from "../../images/logo.png";
-import { useDispatch } from "react-redux";
-import { setOption } from "../../store/reducer/appReducer";
-import DefaultPage from "../../component/defaultPage";
+import React from "react";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Switch,
+  FormGroup,
+  FormControlLabel,
+  Badge,
+} from "@material-ui/core";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { useDispatch, useSelector } from "react-redux";
+import { changeTheme } from "../../store/reducer/appReducer";
+import { useNavigate } from "react-router-dom";
 
-export const options: any = {
-  HOME: <DefaultPage />,
-  "ABOUT US": <DefaultPage />,
-  SERVICES: <DefaultPage />,
-  TRAINING: <DefaultPage />,
-  CELEBRATION: <DefaultPage />,
-  DOWNLOADS: <DefaultPage />,
-  CONTACTS: <DefaultPage />,
-};
 const Header = () => {
   const dispatch = useDispatch();
+  const history = useNavigate();
+  const list = useSelector((state: any) => state?.products?.list);
+  const cartCount = list.reduce((total, item) => total + item.quantity, 0);
+
+  const isDarkTheme = useSelector((state: any) => state.app.isDarkTheme);
 
   return (
-    <div className="headerParent">
-      <div className="headers">
-        <img src={logo} width="50px" height="50px" />
-
-        {Object.keys(options).map((o, i) => (
-          <a className="options" key={i} onClick={() => dispatch(setOption(o))}>
-            {o}
-          </a>
-        ))}
-      </div>
-    </div>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" style={{ flexGrow: 1 }}>
+          My Shoe Store
+        </Typography>
+        <IconButton
+          color="inherit"
+          aria-label="cart"
+          onClick={() => history("/cartDetails")}
+        >
+          <Badge badgeContent={cartCount} color="secondary">
+            <ShoppingCartIcon />
+          </Badge>
+        </IconButton>
+        <FormGroup>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={isDarkTheme}
+                onChange={() => dispatch(changeTheme(!isDarkTheme))}
+              />
+            }
+            label={isDarkTheme ? "Dark Theme" : "Light Theme"}
+          />
+        </FormGroup>
+      </Toolbar>
+    </AppBar>
   );
 };
 

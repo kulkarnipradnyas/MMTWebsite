@@ -10,7 +10,7 @@ const WebpackServer = (env) => {
       open: true,
       historyApiFallback: true,
       liveReload: true,
-      port: 3000,
+      port: 3002,
       client: {
         overlay: false,
       },

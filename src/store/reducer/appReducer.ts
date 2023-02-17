@@ -2,10 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   selectedOption: "HOME",
+  isDarkTheme: true,
 };
 
 const slice = createSlice({
-  name: "venue",
+  name: "app",
   initialState,
   reducers: {
     reset: () => initialState,
@@ -13,8 +14,12 @@ const slice = createSlice({
       ...state,
       selectedOption: payload,
     }),
+    changeTheme: (state, { payload }) => ({
+      ...state,
+      isDarkTheme: payload,
+    }),
   },
 });
 
-export const { reset, setOption } = slice.actions;
+export const { reset, setOption, changeTheme } = slice.actions;
 export default slice.reducer;
