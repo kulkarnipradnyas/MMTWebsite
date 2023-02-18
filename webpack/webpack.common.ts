@@ -11,12 +11,7 @@ const { DefinePlugin } = require("webpack");
 
 const Common = (env: string): any => {
   let publicPath = "/";
-  if (env === "dev") {
-    publicPath = "/";
-  } else if (env === "prod") {
-  } else if (env === "local") {
-    publicPath = "/";
-  }
+  
   const envVar = {
     NODE_ENV: env === "local" ? "development" : "production",
     REACT_APP_ENV: env,
