@@ -6,6 +6,7 @@ import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import {
   addToCart,
+  productList,
   removeFromCart,
   setProducts,
 } from "../../store/reducer/product";
@@ -56,9 +57,13 @@ const DefaultPage = () => {
   const dispatch = useDispatch();
   const products = useSelector((state: RootState) => state.products);
   const [isData, setIsData] = useState(false);
+
   useEffect(() => {
     // Load cart items from local storage
-    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const cartItems = JSON.parse(localStorage.getItem("cartItems"))?.length
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : productList;
+
     dispatch(setProducts(cartItems));
     setIsData(true);
   }, []);
@@ -97,7 +102,6 @@ const DefaultPage = () => {
                 <Button
                   className={classes.quantityButton}
                   onClick={() => {
-                    debugger;
                     dispatch(addToCart(product.id));
                   }}
                 >

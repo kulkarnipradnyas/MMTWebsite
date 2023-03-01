@@ -17,6 +17,7 @@ import { RootState } from "store/store";
 
 const CartDetail = () => {
   const history = useNavigate();
+  const products = useSelector((state: RootState) => state.products);
 
   const cartItems = useSelector((state: RootState) =>
     state.products.list.filter((item) => item.inCart)
@@ -91,7 +92,13 @@ const CartDetail = () => {
             <Button
               variant="contained"
               color="primary"
-              onClick={() => history("/")}
+              onClick={() => {
+                localStorage.setItem(
+                  "cartItems",
+                  JSON.stringify(structuredClone(products.list))
+                );
+                history("/");
+              }}
             >
               <ArrowBack />
               Back
